@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bulma.min.css" />
+    <title><%= checklist.name %></title>
+    <script src="/scripts/task.js"></script>
+  </head>
+  <body>
+    <%- include("../layouts/menu") %>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-four-fifths">
+            <h1 class="title size-4"><%= checklist.name %></h1>
+          </div>
+          <div class="column is-one-fifth">
+            <a
+              href="/checklists/<%= checklist._id %>/tasks/new"
+              class="button is-success is-small"
+              >Nova Tarefa</a
+            >
+            <a href="/checklists" class="button is-small">Voltar</a>
+          </div>
+        </div>
+
+        <hr />
+
+        <% checklist.tasks.forEach((task) => { %>
+          <div class="columns">
+            <div
+              class="column is-four-fifths <% task.done ? 'has-text-success is-italic' : '' %>"
+            >
+              <input type="checkbox" onchange="setTagAsDone(event, this, '<%= task._id%>' )"
+              <% task.done ? "checked" : "" %>>
+                <%= task.name %>
+              </input>
+            </div>
+            <div class="column is-one-fifth">
+              <a
+                class="button is-danger is-small"
+                href="/tasks/<%= task._id %>?_method=delete"
+                >Remover</a
+              >
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  </body>
+</html>
