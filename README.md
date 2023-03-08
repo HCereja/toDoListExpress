@@ -3,6 +3,11 @@
 
 Uma simples lista de tarefas feita com express, ejs e mongoose.
 
+## Como utilizar
+
+Para rodar o app na sua máquina é necessário ter o NodeJS e o MongoDB instalados.
+Após baixar os arquivos, basta rodar o código "npm run dev" na página raiz do projeto e então entrar no link http://localhost:3000.
+
 ## Bugs
 
  O sistema possui dois bugs que ainda não consegui resolver, são eles:
